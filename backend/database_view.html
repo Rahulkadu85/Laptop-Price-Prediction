@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Viewer - Laptop Price Prediction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .stat-card {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            margin: 10px;
+            min-width: 200px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .price {
+            color: #28a745;
+            font-weight: 600;
+        }
+        
+        .timestamp {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e9ecef;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💻 Database Viewer</h1>
+        <p class="subtitle">Laptop Price Prediction Application</p>
+        <p class="subtitle">Generated: 2025-12-02 00:55:27</p>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <div class="stat-card">
+                <div class="stat-label">Total Users</div>
+                <div class="stat-value">2</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Predictions</div>
+                <div class="stat-value">13</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Brands</div>
+                <div class="stat-value">5</div>
+            </div>
+        </div>
+        
+        <!-- Users Table -->
+        <div class="section">
+            <h2>👥 Users</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Rahul Kadu</strong></td>
+                        <td>rahulkadu191@gmail.com</td>
+                        <td class="timestamp">2025-12-01 18:23:44.547560</td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Sanket Dhumne</strong></td>
+                        <td>dsanket214@gmail.com</td>
+                        <td class="timestamp">2025-12-01 19:20:45.947692</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Brand Statistics -->
+        <div class="section">
+            <h2>📊 Predictions by Brand</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Brand</th>
+                        <th>Count</th>
+                        <th>Average Price</th>
+                        <th>Min Price</th>
+                        <th>Max Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td><strong>HP</strong></td>
+                        <td>7</td>
+                        <td class="price">₹35,065.76</td>
+                        <td class="price">₹3,795.54</td>
+                        <td class="price">₹131,068.34</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Asus</strong></td>
+                        <td>3</td>
+                        <td class="price">₹22,305.64</td>
+                        <td class="price">₹17,040.62</td>
+                        <td class="price">₹32,830.41</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Lenovo</strong></td>
+                        <td>1</td>
+                        <td class="price">₹32,264.88</td>
+                        <td class="price">₹32,264.88</td>
+                        <td class="price">₹32,264.88</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Dell</strong></td>
+                        <td>1</td>
+                        <td class="price">₹34,576.73</td>
+                        <td class="price">₹34,576.73</td>
+                        <td class="price">₹34,576.73</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Acer</strong></td>
+                        <td>1</td>
+                        <td class="price">₹17,003.00</td>
+                        <td class="price">₹17,003.00</td>
+                        <td class="price">₹17,003.00</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- All Predictions -->
+        <div class="section">
+            <h2>📋 All Predictions</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User</th>
+                        <th>Brand</th>
+                        <th>CPU (GHz)</th>
+                        <th>RAM (GB)</th>
+                        <th>Storage (GB)</th>
+                        <th>Screen (in)</th>
+                        <th>Weight (kg)</th>
+                        <th>Predicted Price</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>14</td>
+                        <td>Sanket Dhumne</td>
+                        <td><strong>Dell</strong></td>
+                        <td>3.4</td>
+                        <td>62</td>
+                        <td>1000</td>
+                        <td>15.6</td>
+                        <td>2.0</td>
+                        <td class="price">₹34,576.73</td>
+                        <td class="timestamp">2025-12-01 19:21:45.393872</td>
+                    </tr>
+
+                    <tr>
+                        <td>13</td>
+                        <td>Rahul Kadu</td>
+                        <td><strong>Asus</strong></td>
+                        <td>5.0</td>
+                        <td>21</td>
+                        <td>1000</td>
+                        <td>15.6</td>
+                        <td>2.0</td>
+                        <td class="price">₹32,830.41</td>
+                        <td class="timestamp">2025-12-01 18:57:45.052456</td>
+                    </tr>
+
+                    <tr>
+                        <td>11</td>
+                        <td>Rahul Kadu</td>
+                        <td><strong>HP</strong></td>
+                        <td>2.3</td>
+                        <td>16</td>
+                        <td>512</td>
+                        <td>512.0</td>
+                        <td>1.8</td>
+                        <td class="price">₹27,122.82</td>
+                        <td class="timestamp">2025-12-01 18:45:23.589959</td>
+                    </tr>
+
+                    <tr>
+                        <td>10</td>
+                        <td>Rahul Kadu</td>
+                        <td><strong>Lenovo</strong></td>
+                        <td>3.5</td>
+                        <td>16</td>
+                        <td>1000</td>
+                        <td>15.6</td>
+                        <td>1.7</td>
+                        <td class="price">₹32,264.88</td>
+                        <td class="timestamp">2025-12-01 18:40:47</td>
+                    </tr>
+
+                    <tr>
+                        <td>9</td>
+                        <td>Rahul Kadu</td>
+                        <td><strong>Asus</strong></td>
+                        <td>2.5</td>
+                        <td>8</td>
+                        <td>512</td>
+                        <td>15.6</td>
+                        <td>2.5</td>
+                        <td class="price">₹17,040.62</td>
+                        <td class="timestamp">2025-12-01 18:40:47</td>
+                    </tr>
+
+                    <tr>
+                        <td>8</td>
+                        <td>Rahul Kadu</td>
+                        <td><strong>Acer</strong></td>
+                        <td>2.5</td>
+                        <td>7</td>
+                        <td>512</td>
+                        <td>15.6</td>
+                        <td>1.5</td>
+                        <td class="price">₹17,003.00</td>
+                        <td class="timestamp">2025-12-01 18:40:47</td>
+                    </tr>
+
+                    <tr>
+                        <td>7</td>
+                        <td>Rahul Kadu</td>
+                        <td><strong>Asus</strong></td>
+                        <td>2.5</td>
+                        <td>8</td>
+                        <td>512</td>
+                        <td>15.6</td>
+                        <td>1.8</td>
+                        <td class="price">₹17,045.89</td>
+                        <td class="timestamp">2025-12-01 18:40:47</td>
+                    </tr>
+
+                    <tr>
+                        <td>6</td>
+                        <td>Rahul Kadu</td>
+                        <td><strong>HP</strong></td>
+                        <td>2.4</td>
+                        <td>8</td>
+                        <td>512</td>
+                        <td>15.6</td>
+                        <td>2.0</td>
+                        <td class="price">₹17,027.55</td>
+                        <td class="timestamp">2025-12-01 18:40:47</td>
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td>Rahul Kadu</td>
+                        <td><strong>HP</strong></td>
+                        <td>5.0</td>
+                        <td>128</td>
+                        <td>4096</td>
+                        <td>17.5</td>
+                        <td>1.9</td>
+                        <td class="price">₹131,068.34</td>
+                        <td class="timestamp">2025-12-01 18:40:47</td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>Rahul Kadu</td>
+                        <td><strong>HP</strong></td>
+                        <td>3.5</td>
+                        <td>16</td>
+                        <td>998</td>
+                        <td>15.4</td>
+                        <td>1.5</td>
+                        <td class="price">₹32,219.12</td>
+                        <td class="timestamp">2025-12-01 18:40:47</td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>Rahul Kadu</td>
+                        <td><strong>HP</strong></td>
+                        <td>2.5</td>
+                        <td>15</td>
+                        <td>1</td>
+                        <td>115.6</td>
+                        <td>2.0</td>
+                        <td class="price">₹3,795.54</td>
+                        <td class="timestamp">2025-12-01 18:40:47</td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Rahul Kadu</td>
+                        <td><strong>HP</strong></td>
+                        <td>2.5</td>
+                        <td>14</td>
+                        <td>512</td>
+                        <td>1.6</td>
+                        <td>1.5</td>
+                        <td class="price">₹17,113.47</td>
+                        <td class="timestamp">2025-12-01 18:40:47</td>
+                    </tr>
+
+                    <tr>
+                        <td>1</td>
+                        <td>Rahul Kadu</td>
+                        <td><strong>HP</strong></td>
+                        <td>2.5</td>
+                        <td>14</td>
+                        <td>512</td>
+                        <td>1.6</td>
+                        <td>1.5</td>
+                        <td class="price">₹17,113.47</td>
+                        <td class="timestamp">2025-12-01 18:40:47</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p><strong>Database File:</strong> C:\Users\rahul\Downloads\Laptop_Price_Prediction\backend\laptop_price.db</p>
+            <p><strong>Size:</strong> 28.00 KB</p>
+            <p style="margin-top: 10px;">This is a read-only view. Use the Flask application to modify data.</p>
+        </div>
+    </div>
+</body>
+</html>

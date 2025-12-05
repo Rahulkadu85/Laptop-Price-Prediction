@@ -1,0 +1,47 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Database files (binary)
+*.db
+*.sqlite
+*.sqlite3
+
+# Machine Learning model files (binary - DO NOT EDIT AS TEXT)
+*.pkl
+*.pickle
+*.h5
+*.joblib
+
+# Instance folders
+instance/
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak

@@ -1,0 +1,112 @@
+================================================================================
+    GMAIL APP PASSWORD - QUICK SETUP GUIDE
+================================================================================
+
+YOUR EMAIL: rahulkadu191@gmail.com ✓ (Already configured)
+NEED: Gmail App Password (16 digits)
+
+================================================================================
+STEP 1: ENABLE 2-FACTOR AUTHENTICATION
+================================================================================
+
+1. Go to: https://myaccount.google.com/security
+2. Find "2-Step Verification"
+3. Click "Get Started"
+4. Follow the steps to enable it
+5. ✓ Done!
+
+================================================================================
+STEP 2: GENERATE APP PASSWORD
+================================================================================
+
+1. Go to: https://myaccount.google.com/apppasswords
+
+2. Select:
+   - App: Mail
+   - Device: Other (type "Laptop Price App")
+
+3. Click "Generate"
+
+4. Google shows a password like: abcd efgh ijkl mnop
+
+5. COPY IT! (You'll need it next)
+
+================================================================================
+STEP 3: ADD PASSWORD TO CONFIG FILE
+================================================================================
+
+1. Open file: backend/otp_config.py
+
+2. Find line 18:
+   SMTP_PASSWORD = 'your-16-digit-app-password-here'
+
+3. Replace with YOUR app password (remove spaces):
+   SMTP_PASSWORD = 'abcdefghijklmnop'
+   
+   Example:
+   If Google gave: abcd efgh ijkl mnop
+   You type:       abcdefghijklmnop
+
+4. Change line 26 to:
+   DEV_MODE = False
+
+5. Save file (Ctrl+S)
+
+================================================================================
+STEP 4: TEST IT!
+================================================================================
+
+Run in terminal:
+   cd backend
+   python test_otp.py
+
+Check your email: rahulkadu191@gmail.com
+You should receive an OTP email!
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Issue: "Username and Password not accepted"
+→ Make sure you're using App Password, NOT regular password
+→ Generate a new App Password
+→ Remove all spaces from the password
+
+Issue: Can't find "App passwords" option
+→ Enable 2-Factor Authentication first
+→ Wait 2-3 minutes and refresh page
+
+Issue: Email not received
+→ Check spam/junk folder
+→ Verify DEV_MODE = False
+→ Check console for error messages
+
+================================================================================
+CURRENT CONFIGURATION
+================================================================================
+
+File: backend/otp_config.py
+
+SMTP_SERVER = 'smtp.gmail.com'        ✓ Correct
+SMTP_PORT = 587                        ✓ Correct
+SMTP_EMAIL = 'rahulkadu191@gmail.com' ✓ Already set
+SMTP_PASSWORD = '????????????????'   ← ADD YOUR APP PASSWORD HERE
+DEV_MODE = False                       ← Change to False to send emails
+
+================================================================================
+AFTER SETUP
+================================================================================
+
+✓ Run Flask app: python app.py
+✓ Open browser: http://localhost:5000
+✓ Try logging in
+✓ OTP will be sent to your email!
+✓ Check inbox for OTP code
+
+================================================================================
+NEED DETAILED HELP?
+================================================================================
+
+Read: SETUP_YOUR_SMTP_PASSWORD.md (complete guide with screenshots explained)
+
+================================================================================

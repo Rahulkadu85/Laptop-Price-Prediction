@@ -1,0 +1,96 @@
+================================================================================
+IMPORTANT: Binary Files in This Project
+================================================================================
+
+The following files CANNOT be opened in a text editor. If you try to open them,
+you will see the error:
+"The file is not displayed in the text editor because it is either binary or 
+uses an unsupported text encoding."
+
+THIS IS COMPLETELY NORMAL AND EXPECTED!
+
+================================================================================
+BINARY FILES (DO NOT OPEN IN TEXT EDITOR):
+================================================================================
+
+1. backend/model.pkl
+   - Machine learning model (scikit-learn LinearRegression)
+   - Size: ~0.5 KB
+   - Purpose: Trained model for price prediction
+   - How to use: Python code loads it with pickle.load()
+
+2. backend/encoder.pkl
+   - Label encoder for laptop brands
+   - Size: ~0.3 KB
+   - Purpose: Converts brand names to numbers
+   - How to use: Python code loads it with pickle.load()
+
+3. backend/scaler.pkl
+   - Feature scaler (StandardScaler)
+   - Size: ~0.7 KB
+   - Purpose: Normalizes input features
+   - How to use: Python code loads it with pickle.load()
+
+4. backend/laptop_price.db
+   - SQLite database file
+   - Size: ~28 KB
+   - Purpose: Stores users and predictions
+   - How to use: Python scripts or SQLite tools
+
+5. backend/instance/laptop_price.db
+   - Alternative database location
+   - Size: ~8 KB
+   - Purpose: Flask instance folder database
+   - How to use: Python scripts or SQLite tools
+
+================================================================================
+HOW TO WORK WITH THESE FILES:
+================================================================================
+
+For .pkl files (machine learning models):
+------------------------------------------
+# View model information
+python -c "import pickle; model = pickle.load(open('backend/model.pkl', 'rb')); print(type(model))"
+
+# View encoder classes
+python -c "import pickle; enc = pickle.load(open('backend/encoder.pkl', 'rb')); print(enc.classes_)"
+
+
+For .db files (database):
+--------------------------
+# View database contents
+cd backend
+python verify_database.py
+
+# Check predictions
+python check_db.py
+
+
+================================================================================
+SAFE TO EDIT (Text Files):
+================================================================================
+
+✓ backend/app.py - Main Flask application
+✓ backend/requirements.txt - Python dependencies
+✓ backend/templates/index.html - HTML template
+✓ backend/static/css/style.css - Stylesheets
+✓ backend/static/js/app.js - JavaScript code
+✓ All other .py files
+
+================================================================================
+SUMMARY:
+================================================================================
+
+If you see "binary or unsupported text encoding" error:
+
+1. Check the file extension:
+   - .pkl or .db? → This is NORMAL! Use Python scripts to work with it.
+   - .py or .js? → Run: cd backend && python fix_encoding.py
+
+2. Don't try to edit binary files in a text editor - they are meant to be
+   read and written by Python code only.
+
+3. All your text files (.py, .js, .html, .css) are already correctly encoded
+   in UTF-8 and can be safely edited.
+
+================================================================================
