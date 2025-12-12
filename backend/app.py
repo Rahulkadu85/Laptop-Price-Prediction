@@ -22,10 +22,8 @@ app.config['SECRET_KEY'] = 'your-secret-key-change-this-in-production'
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 app.config['SESSION_COOKIE_SECURE'] = False  # Set to True in production with HTTPS
 app.config['SESSION_COOKIE_HTTPONLY'] = True
-app.config['SESSION_TYPE'] = 'filesystem'  # Add this line to specify session type
-
-# Initialize session
-Session(app)
+# app.config['SESSION_TYPE'] = 'filesystem'  # Filesystem not supported on Vercel
+# Session(app) # Use default cookie-based sessions for Vercel compatibility
 
 # Disable caching for static files in development
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -33,7 +31,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(base_dir, 'laptop_price.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(base_dir, 'instance', 'laptop_price.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -463,8 +461,8 @@ def predict():
         data = request.json
         brand = data['brand']
         processor_speed = float(data['processor_speed'])
-        ram_size = float(data['ram_size'])
-        storage_capacity = float(data['storage_capacity'])
+        ram_size = int(float(data['ram_size']))
+        storage_capacity = int(float(data['storage_capacity']))
         screen_size = float(data['screen_size'])
         weight = float(data['weight'])
 
@@ -484,24 +482,19 @@ def predict():
         prediction = model.predict(scaled_features)[0]
 
         # Save to DB with user_id
-        try:
-            new_prediction = Prediction(
-                user_id=session['user_id'],
-                brand=brand,
-                processor_speed=processor_speed,
-                ram_size=ram_size,
-                storage_capacity=storage_capacity,
-                screen_size=screen_size,
-                weight=weight,
-                predicted_price=prediction
-            )
-            db.session.add(new_prediction)
-            db.session.commit()
-            print(f"[OK] Prediction saved: ID={new_prediction.id}, User={session['user_id']}, Brand={brand}, Price={prediction}")
-        except Exception as db_error:
-            db.session.rollback()
-            print(f"[ERROR] Database error: {db_error}")
-            # Don't fail the prediction if DB save fails, just log it
+        new_prediction = Prediction(
+            user_id=session['user_id'],
+            brand=brand,
+            processor_speed=processor_speed,
+            ram_size=ram_size,
+            storage_capacity=storage_capacity,
+            screen_size=screen_size,
+            weight=weight,
+            predicted_price=prediction
+        )
+        db.session.add(new_prediction)
+        db.session.commit()
+        print(f"[OK] Prediction saved: ID={new_prediction.id}, User={session['user_id']}, Brand={brand}, Price={prediction}")
 
         return jsonify({'price': prediction})
 

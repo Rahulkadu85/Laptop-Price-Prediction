@@ -5,3 +5,5 @@ pandas
 scikit-learn
 statsmodels
 numpy
+flask-session
+gunicorn

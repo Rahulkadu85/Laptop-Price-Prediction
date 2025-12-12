@@ -18,18 +18,18 @@ ENV/
 *~
 
 # Database files (binary)
-*.db
-*.sqlite
-*.sqlite3
+# *.db
+# *.sqlite
+# *.sqlite3
 
 # Machine Learning model files (binary - DO NOT EDIT AS TEXT)
-*.pkl
-*.pickle
-*.h5
-*.joblib
+# *.pkl
+# *.pickle
+# *.h5
+# *.joblib
 
 # Instance folders
-instance/
+# instance/
 
 # Environment variables
 .env

@@ -7,7 +7,7 @@ import os
 from datetime import datetime
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
-db_path = os.path.join(base_dir, 'laptop_price.db')
+db_path = os.path.join(base_dir, 'instance', 'laptop_price.db')
 
 def print_separator(char="=", length=100):
     print(char * length)
@@ -71,14 +71,14 @@ def view_database():
         ''')
         brand_stats = cursor.fetchall()
         
-        print("📊 Summary by Brand:")
+        print("Summary by Brand:")
         print(f"\n{'Brand':<15} {'Count':<10} {'Avg Price':<15} {'Min Price':<15} {'Max Price':<15}")
         print("-" * 100)
         for stat in brand_stats:
-            print(f"{stat[0]:<15} {stat[1]:<10} ₹{stat[2]:>12,.2f}  ₹{stat[3]:>12,.2f}  ₹{stat[4]:>12,.2f}")
+            print(f"{stat[0]:<15} {stat[1]:<10} {stat[2]:>12,.2f}  {stat[3]:>12,.2f}  {stat[4]:>12,.2f}")
         
         # Recent predictions (detailed view)
-        print("\n\n📋 Recent Predictions (Last 20):")
+        print("\n\nRecent Predictions (Last 20):")
         cursor.execute('''
             SELECT p.id, p.user_id, u.username, p.brand, 
                    p.processor_speed, p.ram_size, p.storage_capacity,
@@ -95,11 +95,11 @@ def view_database():
         
         for pred in predictions:
             pid, uid, username, brand, cpu, ram, storage, screen, weight, price, date = pred
-            print(f"{pid:<5} {username:<15} {brand:<10} {cpu:<6.1f} {ram:<6.0f} {storage:<8.0f} {screen:<7.1f} {weight:<7.1f} ₹{price:>12,.2f}  {date:<20}")
+            print(f"{pid:<5} {username:<15} {brand:<10} {cpu:<6.1f} {ram:<6.0f} {storage:<8.0f} {screen:<7.1f} {weight:<7.1f} {price:>12,.2f}  {date:<20}")
         
         # All predictions (compact view)
         if pred_count > 20:
-            print(f"\n\n📝 All Predictions (Compact View):")
+            print(f"\n\nAll Predictions (Compact View):")
             cursor.execute('''
                 SELECT p.id, u.username, p.brand, p.predicted_price, p.created_at
                 FROM prediction p
@@ -111,7 +111,7 @@ def view_database():
             print(f"\n{'ID':<5} {'User':<20} {'Brand':<12} {'Predicted Price':<18} {'Date':<25}")
             print("-" * 100)
             for pred in all_preds:
-                print(f"{pred[0]:<5} {pred[1]:<20} {pred[2]:<12} ₹{pred[3]:>14,.2f}   {pred[4]:<25}")
+                print(f"{pred[0]:<5} {pred[1]:<20} {pred[2]:<12} {pred[3]:>14,.2f}   {pred[4]:<25}")
     
     # ========== DATABASE STATISTICS ==========
     print_section("DATABASE STATISTICS")
@@ -142,7 +142,7 @@ def view_database():
     conn.close()
     
     print_separator("=")
-    print("\n✓ Database view complete!")
+    print("\nDatabase view complete!")
     print("\nNote: This is a READ-ONLY view. To modify data, use the Flask application.")
     print_separator("=")
 
