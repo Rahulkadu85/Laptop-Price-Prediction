@@ -1,0 +1,18 @@
+# Netlify configuration for Laptop Price Prediction
+
+[build]
+  # Specify the directory to deploy (serve the static files)
+  publish = "backend"
+  command = "echo 'Building application'"
+
+# Rewrite all requests to index.html for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Custom 404 page
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
