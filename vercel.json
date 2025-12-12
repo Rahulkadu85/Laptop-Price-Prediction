@@ -1,15 +1,25 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "backend/app.py",
-            "use": "@vercel/python"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "backend/app.py"
-        }
-    ]
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/app.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "250mb",
+        "runtime": "python3.11",
+        "includeFiles": "backend/**",
+        "excludeFiles": "backend/__pycache__/**",
+        "outputDirectory": "backend"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "backend/app.py"
+    }
+  ],
+  "env": {
+    "PYTHONUNBUFFERED": "1"
+  }
 }
