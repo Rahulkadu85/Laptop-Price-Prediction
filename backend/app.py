@@ -279,7 +279,7 @@ def signin():
         
         # Delete old OTPs for this user
         OTP.query.filter_by(user_id=user.id, is_verified=False).delete()
-            db.session.commit()
+    db.session.commit()
         
         # Create OTP records
         email_otp = OTP(
