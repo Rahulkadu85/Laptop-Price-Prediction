@@ -279,7 +279,6 @@ def signin():
         
         # Delete old OTPs for this user
         OTP.query.filter_by(user_id=user.id, is_verified=False).delete()
-    db.session.commit()
         
         # Create OTP records
         email_otp = OTP(
@@ -300,7 +299,6 @@ def signin():
             )
             db.session.add(sms_otp)
         
-                db.session.commit()
         
         # Send OTP via email
         send_email_otp(user.email, otp_code, user.username)
@@ -385,7 +383,6 @@ def resend_otp():
         
         # Delete old unverified OTPs
         OTP.query.filter_by(user_id=user.id, is_verified=False).delete()
-            db.session.commit()
         
         # Create new OTP records
         email_otp = OTP(
