@@ -300,7 +300,7 @@ def signin():
             )
             db.session.add(sms_otp)
         
-        db.session.commit()
+                db.session.commit()
         
         # Send OTP via email
         send_email_otp(user.email, otp_code, user.username)
@@ -405,7 +405,7 @@ def resend_otp():
             )
             db.session.add(sms_otp)
         
-        db.session.commit()
+                db.session.commit()
         
         # Send OTP
         send_email_otp(user.email, otp_code, user.username)
