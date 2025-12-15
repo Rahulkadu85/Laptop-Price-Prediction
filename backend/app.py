@@ -31,7 +31,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(base_dir, 'instance', 'laptop_price.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///' + os.path.join(base_dir, 'instance', 'laptop_price.db'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -278,7 +278,10 @@ def signin():
         expires_at = datetime.utcnow() + timedelta(minutes=OTP_EXPIRY_MINUTES)
         
         # Delete old OTPs for this user
-        OTP.query.filter_by(user_id=user.id, is_verified=False).delete()
+            try:
+            OTP.query.filter_by(user_id=user.id, is_verified=False).delete()
+                    except Exception as e:
+        print(f"[WARNING] Could not delete old OTPs: {e}")
         
         # Create OTP records
         email_otp = OTP(
@@ -382,7 +385,10 @@ def resend_otp():
         expires_at = datetime.utcnow() + timedelta(minutes=OTP_EXPIRY_MINUTES)
         
         # Delete old unverified OTPs
-        OTP.query.filter_by(user_id=user.id, is_verified=False).delete()
+            try:
+            OTP.query.filter_by(user_id=user.id, is_verified=False).delete()
+                    except Exception as e:
+        print(f"[WARNING] Could not delete old OTPs: {e}")
         
         # Create new OTP records
         email_otp = OTP(
