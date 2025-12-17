@@ -280,7 +280,7 @@ def signin():
         # Delete old OTPs for this user
         try:
             OTP.query.filter_by(user_id=user.id, is_verified=False).delete()
-                            except Exception as e:
+                                    except Exception as e:
         print(f"[WARNING] Could not delete old OTPs: {e}")
         
         # Create OTP records
