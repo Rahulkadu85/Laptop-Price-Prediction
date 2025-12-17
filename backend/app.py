@@ -278,7 +278,7 @@ def signin():
         expires_at = datetime.utcnow() + timedelta(minutes=OTP_EXPIRY_MINUTES)
         
         # Delete old OTPs for this user
-            try:
+        try:
             OTP.query.filter_by(user_id=user.id, is_verified=False).delete()
                     except Exception as e:
         print(f"[WARNING] Could not delete old OTPs: {e}")
